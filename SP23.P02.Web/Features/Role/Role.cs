@@ -1,7 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-public class Role : IdentityRole<int>
+namespace SP23.P02.Web.Features.Roles
+{
+
+    public class Role : IdentityRole<int>
  {
-    public string RoleName { get; set; }
+    public const string Admin = nameof(Admin);
+    public const string User = nameof(User);
+    public ICollection<UserRole> Users { get; set; } = new List<UserRole>();
  }
+    }
 
