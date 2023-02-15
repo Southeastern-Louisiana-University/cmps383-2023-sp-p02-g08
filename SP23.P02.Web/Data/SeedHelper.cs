@@ -51,4 +51,38 @@ public static class SeedHelper
             });
         }
     }
+
+    public static async Task CreateUsers(IServiceProvider serviceProvider)
+    {
+        var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+        const string password = "password123!";
+        if(!await userManager.Users.AnyAsync())
+        {
+            var admin = new User
+            {
+                UserName = "galkadi",
+            };
+
+            await userManager.CreateAsync(admin, password);
+            await userManager.AddToRoleAsync(admin, password);
+
+            var bob = new User
+            {
+                UserName = "bob"
+            };
+
+            await userManager.CreateAsync(bob, password);
+            await userManager.AddToRoleAsync(bob, password);
+
+            var sue = new User
+            {
+                UserName = "sue"
+            };
+
+            await userManager.CreateAsync(sue, password);
+            await userManager.AddToRoleAsync(sue, password);
+
+
+        }
+    }
 }
