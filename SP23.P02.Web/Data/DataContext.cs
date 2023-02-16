@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SP23.P02.Web.Features.Roles;
+using SP23.P02.Web.Features.Users;
+using SP23.P02.Web.Features.UserRoles;
 
 namespace SP23.P02.Web.Data;
 
