@@ -1,19 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
+using SP23.P02.Web.Features.UserRoles;
 
-public class User : IdentityUser<int>
+namespace SP23.P02.Web.Features.Users
 {
-    public ICollection<UserRole> Users { get; set; } = new List<UserRole>();
-
-}
-public class CreateUserDto
-{
-
-
-    [Required]
-    public string UserName { get; set; } = string.Empty;
-    [Required]
-    public string Password { get; set; } = string.Empty;
-    [Required, MinLength(1)]
-    public string[] Roles { get; set; } = Array.Empty<string>();
+    public class User : IdentityUser<int>
+    {
+        // Why you can't initialize this with a blank ICollection baffles me
+        public ICollection<UserRole> Roles { get; set; } = new List<UserRole>();
+    }
 }
